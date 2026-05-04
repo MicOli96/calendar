@@ -1,64 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calendar</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+    <script src="today.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Calendar</h1>
+    </header>
 
-  <header class="app-header">
-    <h1>Calendar</h1>
-  </header>
+    <div class="app">
+      <!-- LEFT PANEL: Todo list -->
+      <div class="left-panel">
+        <section class="welcome-segment" aria-label="Välkomstsegment">
+          <div class="welcome-content">
+            <time id="clock" class="clock" aria-label="Aktuell tid"> </time>
+            <time
+              id="date-display"
+              class="date-display"
+              aria-label="Dagens datum"
+            >
+            </time>
+          </div>
+        </section>
 
-  <div class="app">
-
-    <!-- LEFT PANEL: Todo list -->
-    <div class="left-panel">
-
-      <div class="welcome-segment">
-        <div id="clock" class="clock"></div>
-        <div id="date-display" class="date-display"></div>
+        <section class="todo-section">
+          <form id="todo-form">
+            <input
+              type="text"
+              id="todo-text"
+              placeholder="What needs to be done?"
+              required
+            />
+            <input type="date" id="todo-date" required />
+            <button type="submit">Add todo</button>
+          </form>
+          <ul id="todo-list"></ul>
+        </section>
       </div>
 
-      <section class="todo-section">
-        <form id="todo-form">
-          <input type="text" id="todo-text" placeholder="What needs to be done?" required>
-          <input type="date" id="todo-date" required>
-          <button type="submit">Add todo</button>
-        </form>
-        <ul id="todo-list"></ul>
-      </section>
+      <!-- RIGHT PANEL: Calendar -->
+      <div class="right-panel">
+        <div class="calendar-header">
+          <button id="prev-month" class="nav-btn">&#8249;</button>
+          <h2 id="month-title" class="month-title"></h2>
+          <button id="next-month" class="nav-btn">&#8250;</button>
+        </div>
 
+        <div class="calendar-weekdays">
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div class="weekend">Sat</div>
+          <div class="weekend">Sun</div>
+        </div>
+
+        <div id="calendar-grid" class="calendar-grid"></div>
+      </div>
     </div>
 
-    <!-- RIGHT PANEL: Calendar -->
-    <div class="right-panel">
-
-      <div class="calendar-header">
-        <button id="prev-month" class="nav-btn">&#8249;</button>
-        <h2 id="month-title" class="month-title"></h2>
-        <button id="next-month" class="nav-btn">&#8250;</button>
-      </div>
-
-      <div class="calendar-weekdays">
-        <div>Mon</div>
-        <div>Tue</div>
-        <div>Wed</div>
-        <div>Thu</div>
-        <div>Fri</div>
-        <div class="weekend">Sat</div>
-        <div class="weekend">Sun</div>
-      </div>
-
-      <div id="calendar-grid" class="calendar-grid"></div>
-
-    </div>
-  </div>
-
-  <script src="todos.js"></script>
-  <script src="calendar.js"></script>
-  <script>initTodos(); initCalendar();</script>
-</body>
+    <script src="todos.js"></script>
+    <script src="calendar.js"></script>
+    <script>
+      initTodos();
+      initCalendar();
+      initToday();
+    </script>
+  </body>
 </html>
