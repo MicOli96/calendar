@@ -142,5 +142,23 @@ function renderCalendar() {
 }
 
 function initCalendar() {
+    document.getElementById("prev-month").addEventListener("click", function() {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar();
+    });
+
+    document.getElementById("next-month").addEventListener("click", function() {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar();
+    });
+
     renderCalendar();
 }
