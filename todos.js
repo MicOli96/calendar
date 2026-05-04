@@ -25,6 +25,7 @@ function renderTodos() {
         emptyItem.className = "empty-message";
         emptyItem.textContent = "No todos yet.";
         list.appendChild(emptyItem);
+        if (typeof renderCalendar === "function") renderCalendar();
         return;
     }
 
@@ -53,6 +54,8 @@ function renderTodos() {
         item.appendChild(deleteButton);
         list.appendChild(item);
     }
+
+    if (typeof renderCalendar === "function") renderCalendar();
 }
 
 function initTodos() {

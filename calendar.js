@@ -23,11 +23,8 @@ function renderCalendar() {
     var firstWeekday  = new Date(currentYear, currentMonth, 1).getDay();
     var daysInMonth   = new Date(currentYear, currentMonth + 1, 0).getDate();
     var todayKey      = dateToKey(new Date());
-
-    // Monday-based offset (0=Mon … 6=Sun)
     var offset = (firstWeekday + 6) % 7;
 
-    // Fill leading cells with previous month's days
     var prevMonth          = currentMonth === 0 ? 11 : currentMonth - 1;
     var prevYear           = currentMonth === 0 ? currentYear - 1 : currentYear;
     var lastDayOfPrevMonth = new Date(prevYear, prevMonth + 1, 0).getDate();
@@ -42,7 +39,6 @@ function renderCalendar() {
         grid.appendChild(cell);
     }
 
-    // Current month days
     for (var day = 1; day <= daysInMonth; day++) {
         var date    = new Date(currentYear, currentMonth, day);
         var dateKey = dateToKey(date);
@@ -63,6 +59,21 @@ function renderCalendar() {
         dayNumber.className = "day-number";
         dayNumber.textContent = day;
         cell.appendChild(dayNumber);
+
+        var count = 0;
+        if (typeof todos !== "undefined") {
+            for (var j = 0; j < todos.length; j++) {
+                if (todos[j].date === dateKey) count++;
+            }
+        }
+
+        if (count > 0) {
+            var badge = document.createElement("div");
+            badge.className = "todo-badge";
+            badge.textContent = count;
+            cell.appendChild(badge);
+        }
+
 
         grid.appendChild(cell);
     }
