@@ -1,3 +1,17 @@
+:root {
+  --bg:           #f9d9e8;
+  --text:         #3d1a28;
+  --gold:         #c07a20;
+  --pink-light:   #ffb3c6;
+  --pink:         #ff85a1;
+  --pink-deep:    #e8709a;
+  --surface:      #fce6f2;
+  --surface-light:#fef2f8;
+  --today-bg:     #f5e6c0;
+  --font:         'Noto Serif JP', 'Times New Roman', serif;
+  --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,17 +19,17 @@
 }
 
 body {
-  background-color: #f9d9e8;
-  color: #3d1a28;
-  font-family: 'Noto Serif JP', 'Times New Roman', serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f9d9e8; }
+::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: #ffb3c640; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #ff85a1; }
+::-webkit-scrollbar-thumb:hover { background: var(--pink); }
 
 /* PETALS */
 #petals-container {
@@ -30,7 +44,7 @@ body {
 .petal {
   position: absolute;
   top: -30px;
-  background: radial-gradient(ellipse at 30% 30%, #ffe4ef, #ffb3c6, #ff85a1);
+  background: radial-gradient(ellipse at 30% 30%, #ffe4ef, var(--pink-light), var(--pink));
   border-radius: 0 50% 0 50%;
   opacity: 0;
   pointer-events: none;
@@ -71,14 +85,14 @@ body {
   justify-content: center;
   padding: 14px 16px 12px;
   border-bottom: 1px solid #ffb3c650;
-  background: linear-gradient(180deg, #f5c0d8 0%, #f9d9e8 100%);
-  animation: panelFadeUp 0.6s cubic-bezier(0.4,0,0.2,1) both;
+  background: linear-gradient(180deg, #f5c0d8 0%, var(--bg) 100%);
+  animation: panelFadeUp 0.6s var(--ease) both;
 }
 
 .app-header h1 {
   font-size: 1.1rem;
   font-weight: 300;
-  color: #c07a20;
+  color: var(--gold);
   letter-spacing: 4px;
   animation: titleShimmer 4s ease-in-out infinite;
 }
@@ -98,7 +112,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  animation: panelFadeUp 0.6s 0.1s cubic-bezier(0.4,0,0.2,1) both;
+  animation: panelFadeUp 0.6s 0.1s var(--ease) both;
 }
 
 /* WELCOME SEGMENT */
@@ -116,7 +130,7 @@ body {
 .clock {
   font-size: 2.4rem;
   font-weight: 300;
-  color: #c07a20;
+  color: var(--gold);
   letter-spacing: 3px;
   margin-bottom: 8px;
   animation: clockFloat 4s ease-in-out infinite;
@@ -124,7 +138,7 @@ body {
 
 .date-display {
   font-size: 0.85rem;
-  color: #c07a20;
+  color: var(--gold);
   letter-spacing: 1.5px;
   opacity: 0.85;
 }
@@ -144,30 +158,30 @@ body {
 
 .tab-btn {
   flex: 1;
-  background: #fce6f2;
+  background: var(--surface);
   border: 1px solid #ffb3c650;
   border-radius: 4px 4px 0 0;
   color: #3d1a2870;
-  font-family: 'Noto Serif JP', serif;
+  font-family: var(--font);
   font-size: 0.68rem;
   letter-spacing: 0.3px;
   padding: 8px 2px;
   cursor: pointer;
-  transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+  transition: all 0.22s var(--ease);
   min-height: 44px;
 }
 
 .tab-btn:hover {
-  color: #c07a20;
-  border-color: #ffb3c6;
+  color: var(--gold);
+  border-color: var(--pink-light);
   background: #f9d0e6;
 }
 
 .tab-btn.active {
-  background: #f9d9e8;
-  border-color: #ffb3c6;
-  border-bottom-color: #f9d9e8;
-  color: #c07a20;
+  background: var(--bg);
+  border-color: var(--pink-light);
+  border-bottom-color: var(--bg);
+  color: var(--gold);
   font-weight: 700;
   box-shadow: 0 -3px 10px rgba(255,133,161,0.15);
 }
@@ -187,7 +201,7 @@ body {
 
 .tab-content.active {
   display: flex;
-  animation: panelFadeUp 0.25s cubic-bezier(0.4,0,0.2,1) both;
+  animation: panelFadeUp 0.25s var(--ease) both;
 }
 
 /* FORMS */
@@ -202,12 +216,12 @@ body {
 #todo-form input,
 #schema-form input,
 #helgdag-form input {
-  background: #fef2f8;
+  background: var(--surface-light);
   border: 1px solid #ffb3c655;
   border-radius: 4px;
   padding: 12px;
-  color: #3d1a28;
-  font-family: 'Noto Serif JP', serif;
+  color: var(--text);
+  font-family: var(--font);
   font-size: 1rem;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
@@ -218,7 +232,7 @@ body {
 #todo-form input:focus,
 #schema-form input:focus,
 #helgdag-form input:focus {
-  border-color: #ff85a1;
+  border-color: var(--pink);
   box-shadow: 0 0 10px #ff85a130;
   transform: translateY(-1px);
 }
@@ -239,23 +253,23 @@ body {
 #todo-form button,
 #schema-form button,
 #helgdag-form button {
-  background: linear-gradient(135deg, #e8709a, #ff85a1);
+  background: linear-gradient(135deg, var(--pink-deep), var(--pink));
   border: 1px solid #ffb3c650;
   border-radius: 4px;
-  color: #fce6f2;
-  font-family: 'Noto Serif JP', serif;
+  color: var(--surface);
+  font-family: var(--font);
   font-size: 0.88rem;
   letter-spacing: 2px;
   padding: 12px;
   cursor: pointer;
-  transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+  transition: all 0.22s var(--ease);
   min-height: 44px;
 }
 
 #todo-form button:hover,
 #schema-form button:hover,
 #helgdag-form button:hover {
-  background: linear-gradient(135deg, #ff85a1, #ffb3c6);
+  background: linear-gradient(135deg, var(--pink), var(--pink-light));
   box-shadow: 0 6px 20px #ff85a155;
   transform: translateY(-2px);
 }
@@ -275,11 +289,11 @@ body {
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
-  background: #fce6f2;
+  background: var(--surface);
   border: 1px solid #ffb3c635;
   border-radius: 4px;
   transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
-  animation: slideIn 0.35s cubic-bezier(0.4,0,0.2,1) both;
+  animation: slideIn 0.35s var(--ease) both;
 }
 
 @keyframes slideIn {
@@ -296,7 +310,7 @@ body {
 .todo-text {
   flex: 1;
   font-size: 0.88rem;
-  color: #3d1a28;
+  color: var(--text);
 }
 
 .todo-date-label {
@@ -309,7 +323,7 @@ body {
   background: none;
   border: 1px solid #e8709a50;
   border-radius: 50%;
-  color: #e8709a;
+  color: var(--pink-deep);
   width: 32px;
   height: 32px;
   cursor: pointer;
@@ -317,15 +331,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+  transition: all 0.22s var(--ease);
   flex-shrink: 0;
   padding: 0;
   line-height: 1;
 }
 
 .delete-btn:hover {
-  background: #e8709a;
-  color: #fce6f2;
+  background: var(--pink-deep);
+  color: var(--surface);
   box-shadow: 0 0 12px #e8709a80;
   transform: rotate(12deg) scale(1.1);
 }
@@ -345,7 +359,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  animation: panelFadeUp 0.6s 0.18s cubic-bezier(0.4,0,0.2,1) both;
+  animation: panelFadeUp 0.6s 0.18s var(--ease) both;
 }
 
 /* CALENDAR HEADER */
@@ -361,25 +375,25 @@ body {
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 3px;
-  color: #c07a20;
+  color: var(--gold);
 }
 
 .nav-btn {
   background: none;
   border: 1px solid #ffb3c655;
   border-radius: 4px;
-  color: #c07a20;
+  color: var(--gold);
   width: 40px;
   height: 40px;
   cursor: pointer;
   font-size: 1rem;
-  font-family: 'Noto Serif JP', serif;
-  transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+  font-family: var(--font);
+  transition: all 0.22s var(--ease);
 }
 
 .nav-btn:hover {
   background: #ffb3c620;
-  border-color: #ff85a1;
+  border-color: var(--pink);
   box-shadow: 0 0 14px #ff85a135;
   transform: scale(1.1);
 }
@@ -395,13 +409,13 @@ body {
 .calendar-weekdays div {
   font-size: 0.65rem;
   letter-spacing: 0.5px;
-  color: #3d1a2860;
+  color: #160b10fd;
   padding: 4px 0;
   text-transform: uppercase;
 }
 
 .calendar-weekdays .weekend {
-  color: #e8709a80;
+  color: #f51919fb;
 }
 
 /* CALENDAR GRID */
@@ -420,14 +434,14 @@ body {
   min-height: 48px;
   border: 1px solid #ffb3c625;
   border-radius: 4px;
-  background: #fef2f8;
+  background: var(--surface-light);
   font-size: 0.8rem;
   color: #3d1a2860;
-  transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+  transition: all 0.22s var(--ease);
 }
 
 .calendar-cell.has-day {
-  color: #c07a20;
+  color: var(--gold);
   cursor: default;
 }
 
@@ -444,28 +458,28 @@ body {
 }
 
 .calendar-cell.weekend-day .day-number {
-  color: #e8709a;
+  color: var(--pink-deep);
 }
 
 .calendar-cell.today {
-  background: #f5e6c0;
-  border-color: #c07a20;
+  background: var(--today-bg);
+  border-color: var(--gold);
   animation: todayPulse 2.8s ease-in-out infinite;
 }
 
 .calendar-cell.today .day-number {
-  color: #c07a20;
+  color: var(--gold);
   font-weight: 700;
 }
 
 .calendar-cell.holiday .day-number {
-  color: #e8709a;
+  color: var(--pink-deep);
 }
 
 .holiday-label {
   display: none;
   font-size: 0.5rem;
-  color: #e8709a;
+  color: var(--pink-deep);
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -477,7 +491,7 @@ body {
 
 .todo-badge {
   margin-top: 3px;
-  background: #c07a20;
+  background: var(--gold);
   color: #fff5f9;
   font-size: 0.55rem;
   width: 14px;

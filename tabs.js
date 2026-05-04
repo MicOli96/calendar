@@ -23,7 +23,7 @@ function renderSchedule() {
     if (schedule.length === 0) {
         var emptyItem = document.createElement("li");
         emptyItem.className = "empty-message";
-        emptyItem.textContent = "No schedule items yet.";
+        emptyItem.textContent = "Inga aktiviteter ännu.";
         list.appendChild(emptyItem);
         return;
     }
@@ -98,7 +98,7 @@ function renderCustomHolidays() {
     if (customHolidays.length === 0) {
         var emptyItem = document.createElement("li");
         emptyItem.className = "empty-message";
-        emptyItem.textContent = "No custom holidays yet.";
+        emptyItem.textContent = "Inga egna helgdagar tillagda ännu.";
         list.appendChild(emptyItem);
         return;
     }

@@ -23,7 +23,7 @@ function renderTodos() {
     if (todos.length === 0) {
         var emptyItem = document.createElement("li");
         emptyItem.className = "empty-message";
-        emptyItem.textContent = "No todos yet.";
+        emptyItem.textContent = "Inga todos ännu.";
         list.appendChild(emptyItem);
         if (typeof renderCalendar === "function") renderCalendar();
         return;
