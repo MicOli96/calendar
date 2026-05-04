@@ -23,7 +23,7 @@ function renderCalendar() {
     var firstWeekday  = new Date(currentYear, currentMonth, 1).getDay();
     var daysInMonth   = new Date(currentYear, currentMonth + 1, 0).getDate();
     var todayKey      = dateToKey(new Date());
-    var offset        = (firstWeekday + 6) % 7;
+    var offset = (firstWeekday + 6) % 7;
 
     var prevMonth          = currentMonth === 0 ? 11 : currentMonth - 1;
     var prevYear           = currentMonth === 0 ? currentYear - 1 : currentYear;
@@ -60,7 +60,6 @@ function renderCalendar() {
         dayNumber.textContent = day;
         cell.appendChild(dayNumber);
 
-        // Count todos scheduled for this day
         var count = 0;
         if (typeof todos !== "undefined") {
             for (var j = 0; j < todos.length; j++) {
@@ -74,6 +73,7 @@ function renderCalendar() {
             badge.textContent = count;
             cell.appendChild(badge);
         }
+
 
         grid.appendChild(cell);
     }
