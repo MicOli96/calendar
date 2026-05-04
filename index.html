@@ -1,75 +1,103 @@
 <!doctype html>
 <html lang="sv">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendar</title>
-    <script src="today.js"></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header class="app-header">
-      <h1>Calendar</h1>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <div class="app">
-      <!-- LEFT PANEL: Todo list -->
-      <div class="left-panel">
-        <section class="welcome-segment" aria-label="Välkomstsegment">
-          <div class="welcome-content">
-            <time id="clock" class="clock" aria-label="Aktuell tid"> </time>
-            <time
-              id="date-display"
-              class="date-display"
-              aria-label="Dagens datum"
-            >
-            </time>
-          </div>
-        </section>
+  <div id="petals-container"></div>
 
-        <section class="todo-section">
+  <header class="app-header">
+    <h1>Calendar</h1>
+  </header>
+
+  <div class="app">
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+
+      <div class="welcome-segment">
+        <div id="clock" class="clock"></div>
+        <div id="date-display" class="date-display"></div>
+      </div>
+
+      <div class="tabs-container">
+        <div class="tab-buttons">
+          <button type="button" class="tab-btn active" data-tab="todo">Todos</button>
+          <button type="button" class="tab-btn" data-tab="schema">Schema</button>
+          <button type="button" class="tab-btn" data-tab="helgdag">Helgdagar</button>
+        </div>
+
+        <!-- TODO-fliken -->
+        <div class="tab-content active" id="tab-todo">
           <form id="todo-form">
-            <input
-              type="text"
-              id="todo-text"
-              placeholder="What needs to be done?"
-              required
-            />
-            <input type="date" id="todo-date" required />
+            <input type="text" id="todo-text" placeholder="What needs to be done?" required>
+            <input type="date" id="todo-date" aria-label="Todo date" required>
             <button type="submit">Add todo</button>
           </form>
           <ul id="todo-list"></ul>
-        </section>
-      </div>
-
-      <!-- RIGHT PANEL: Calendar -->
-      <div class="right-panel">
-        <div class="calendar-header">
-          <button id="prev-month" class="nav-btn">&#8249;</button>
-          <h2 id="month-title" class="month-title"></h2>
-          <button id="next-month" class="nav-btn">&#8250;</button>
         </div>
 
-        <div class="calendar-weekdays">
-          <div>Mon</div>
-          <div>Tue</div>
-          <div>Wed</div>
-          <div>Thu</div>
-          <div>Fri</div>
-          <div class="weekend">Sat</div>
-          <div class="weekend">Sun</div>
+        <!-- SCHEMA-fliken -->
+        <div class="tab-content" id="tab-schema">
+          <form id="schema-form">
+            <input type="date" id="schema-datum" aria-label="Schema date" required>
+            <input type="text" id="schema-tid" placeholder="Time (e.g. 08:00–10:00)">
+            <input type="text" id="schema-amne" placeholder="Subject / activity" required>
+            <button type="submit">Add</button>
+          </form>
+          <ul id="schema-list"></ul>
         </div>
 
-        <div id="calendar-grid" class="calendar-grid"></div>
+        <!-- HELGDAG-fliken -->
+        <div class="tab-content" id="tab-helgdag">
+          <form id="helgdag-form">
+            <input type="date" id="helgdag-datum" aria-label="Holiday date" required>
+            <input type="text" id="helgdag-namn" placeholder="Holiday name" required>
+            <button type="submit">Add</button>
+          </form>
+          <ul id="helgdag-list"></ul>
+        </div>
+
       </div>
     </div>
 
-    <script src="todos.js"></script>
-    <script src="calendar.js"></script>
-    <script>
-      initTodos();
-      initCalendar();
-      initToday();
-    </script>
-  </body>
+    <!-- RIGHT PANEL: Calendar -->
+    <div class="right-panel">
+
+      <div class="calendar-header">
+        <button type="button" id="prev-month" class="nav-btn">&#8249;</button>
+        <h2 id="month-title" class="month-title"></h2>
+        <button type="button" id="next-month" class="nav-btn">&#8250;</button>
+      </div>
+
+      <div class="calendar-weekdays">
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div class="weekend">Sat</div>
+        <div class="weekend">Sun</div>
+      </div>
+
+      <div id="calendar-grid" class="calendar-grid"></div>
+
+    </div>
+  </div>
+
+  <script src="todos.js"></script>
+  <script src="tabs.js"></script>
+  <script src="calendar.js"></script>
+  <script src="today.js"></script>
+  <script src="main.js"></script>
+  <script>
+    initToday();
+  </script>
+</body>
 </html>
