@@ -9,6 +9,13 @@ function formatDate(dateString) {
     return parts[2] + "/" + parts[1] + "/" + parts[0];
 }
 
+function deleteTodo(event) {
+    var index = parseInt(event.target.getAttribute("data-index"));
+    todos.splice(index, 1);
+    saveTodos();
+    renderTodos();
+}
+
 function renderTodos() {
     var list = document.getElementById("todo-list");
     list.innerHTML = "";
@@ -35,8 +42,15 @@ function renderTodos() {
         dateSpan.className = "todo-date-label";
         dateSpan.textContent = formatDate(todo.date);
 
+        var deleteButton = document.createElement("button");
+        deleteButton.className = "delete-btn";
+        deleteButton.textContent = "×";
+        deleteButton.setAttribute("data-index", i);
+        deleteButton.addEventListener("click", deleteTodo);
+
         item.appendChild(textSpan);
         item.appendChild(dateSpan);
+        item.appendChild(deleteButton);
         list.appendChild(item);
     }
 }
