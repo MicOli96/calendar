@@ -21,4 +21,5 @@ initTabs();
 initSchedule();
 initHolidays();
 initCalendar();
+initToday();
 createPetals();
