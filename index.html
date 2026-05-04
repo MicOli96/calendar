@@ -26,16 +26,16 @@
 
       <div class="tabs-container">
         <div class="tab-buttons">
-          <button class="tab-btn active" data-tab="todo">Todos</button>
-          <button class="tab-btn" data-tab="schema">Schema</button>
-          <button class="tab-btn" data-tab="helgdag">Helgdagar</button>
+          <button type="button" class="tab-btn active" data-tab="todo">Todos</button>
+          <button type="button" class="tab-btn" data-tab="schema">Schema</button>
+          <button type="button" class="tab-btn" data-tab="helgdag">Helgdagar</button>
         </div>
 
         <!-- TODO-fliken -->
         <div class="tab-content active" id="tab-todo">
           <form id="todo-form">
             <input type="text" id="todo-text" placeholder="What needs to be done?" required>
-            <input type="date" id="todo-date" required>
+            <input type="date" id="todo-date" aria-label="Todo date" required>
             <button type="submit">Add todo</button>
           </form>
           <ul id="todo-list"></ul>
@@ -44,7 +44,7 @@
         <!-- SCHEMA-fliken -->
         <div class="tab-content" id="tab-schema">
           <form id="schema-form">
-            <input type="date" id="schema-datum" required>
+            <input type="date" id="schema-datum" aria-label="Schema date" required>
             <input type="text" id="schema-tid" placeholder="Time (e.g. 08:00–10:00)">
             <input type="text" id="schema-amne" placeholder="Subject / activity" required>
             <button type="submit">Add</button>
@@ -55,7 +55,7 @@
         <!-- HELGDAG-fliken -->
         <div class="tab-content" id="tab-helgdag">
           <form id="helgdag-form">
-            <input type="date" id="helgdag-datum" required>
+            <input type="date" id="helgdag-datum" aria-label="Holiday date" required>
             <input type="text" id="helgdag-namn" placeholder="Holiday name" required>
             <button type="submit">Add</button>
           </form>
@@ -69,9 +69,9 @@
     <div class="right-panel">
 
       <div class="calendar-header">
-        <button id="prev-month" class="nav-btn">&#8249;</button>
+        <button type="button" id="prev-month" class="nav-btn">&#8249;</button>
         <h2 id="month-title" class="month-title"></h2>
-        <button id="next-month" class="nav-btn">&#8250;</button>
+        <button type="button" id="next-month" class="nav-btn">&#8250;</button>
       </div>
 
       <div class="calendar-weekdays">
